@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE KUNDE SYSTEM "DTDKUNDE.DTD">
+
+<KUNDE>
+	<tabname>Kunde</tabname>
+	<zeile>
+		<UPKUNDE KNR="1" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
+	</zeile>
+	<zeile>
+		<UPKUNDE KNR="2" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
+	</zeile>
+	<zeile>
+		<UPKUNDE KNR="3" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
+	</zeile>	
+	<zeile>
+		<UPKUNDE KNR="4" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
+	</zeile>
+	<zeile>	
+		<UPKUNDE KNR="5" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
+	</zeile>
+</KUNDE>
