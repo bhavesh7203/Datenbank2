@@ -4,19 +4,9 @@
 
 <KUNDE>
 	<tabname>Kunde</tabname>
-	<zeile>
-		<UPKUNDE KNR="1" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
-	</zeile>
-	<zeile>
-		<UPKUNDE KNR="2" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
-	</zeile>
-	<zeile>
-		<UPKUNDE KNR="3" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
-	</zeile>	
-	<zeile>
-		<UPKUNDE KNR="4" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
-	</zeile>
-	<zeile>	
-		<UPKUNDE KNR="5" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
-	</zeile>
+	<UPKUNDE KNR="1" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
+	<UPKUNDE KNR="2" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
+	<UPKUNDE KNR="3" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
+	<UPKUNDE KNR="4" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
+	<UPKUNDE KNR="5" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
 </KUNDE>
