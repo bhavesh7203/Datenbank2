@@ -25,7 +25,7 @@ public class BasicSax5Uodate {
  
   String filename;
   System.out.println("BasicSax5: Welcher XML-File soll geparst werden? (Eingabe mit Endung .xml bitte!)");
-  filename="CONTAINERTYP.XML";  //IO1.einstring();
+  filename="UKUNDE.XML";  //IO1.einstring();
   MyContentHandler handler = new MyContentHandler();
   MyErrorHandler ehandler = new MyErrorHandler(); 
   System.out.println("Versuch: XML-File = "+filename+" zu oeffnen");
@@ -53,6 +53,10 @@ public class BasicSax5Uodate {
    FileWriter pta; /* Zeichenorientierte Ausgabedatei    */
    PrintWriter pd1;/* Methodeninventar fuer Ausgabedatei */
    String dsn;     /* Name der SQL-Ausgabedatei          */ 
+   
+   String whereklausel=null;
+   String setklausel="SET";
+   String ak=null, wak=null, wk=null, updatestr=null;
 
   public void startDocument()
   {System.out.println("Anfang des Parsens: ");
@@ -65,7 +69,41 @@ public class BasicSax5Uodate {
   { 
       AttributesImpl b1 = new AttributesImpl(attributes);
       int l=b1.getLength();
+      String PRIK = b1.getQName(0);
+      String wo=b1.getValue(0);
       
+      
+      int i=1,cm=0;
+      
+      int m=0;
+      
+      while(i<= l-2){
+          ak=b1.getQName(i);
+          wak=b1.getValue(i);
+          
+          wk=b1.getValue(i+1);
+          if (wk.equals("char")||wk.equals("varchar")) cm=1;
+          if (wk.equals("date")) cm=3;
+          
+          if(cm==0) wak=wak;
+          if(cm==1) wak="'"+wak+"'";
+          if(cm==3) wak="TO_DATE('"+wak+"',FORMATSTRING)";
+          
+          if(m==0){
+              setklausel=setklausel+ak+"="+wak;
+              m=1;
+              
+          }
+          else{
+              setklausel=setklausel+","+ak+"="+wak;
+          }
+          i=i+2;
+      }
+      
+      setklausel=setklausel+" ";
+      whereklausel="WHERE"+PRIK+"="+wo;
+      update="UPDATE"+setklausel+whereklausel;
+      System.out.println("---> "+update);
   }
 
   public void characters(char[] ch, int start, int length) throws SAXException
