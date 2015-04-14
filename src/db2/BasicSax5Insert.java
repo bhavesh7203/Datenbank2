@@ -18,7 +18,7 @@ import javax.xml.parsers.*;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
     
-public class BasicSax5{
+public class BasicSax5Insert{
     
  static String insert;
   
