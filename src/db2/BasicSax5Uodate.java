@@ -41,12 +41,7 @@ public class BasicSax5Uodate {
  }
 
  public static class MyContentHandler implements ContentHandler
- { String insertAnf=new String("INSERT INTO ");
-   String tabelle=new String();
-   String spaltseq=new String();
-   String values=new String(" VALUES");
-   String wertseq=new String();
-   int za=0;       /* Zeile aktiv <=> za=1               */
+ { int za=0;       /* Zeile aktiv <=> za=1               */
    int m=0;        /* lfd. Spaltenr.i.d. Zeile           */
    int cm=0;       /* DTYP(Spalte) ist SQL-char-aehnlich */
    String aktwert; /* Wert des aktuellen XML-Elements    */
