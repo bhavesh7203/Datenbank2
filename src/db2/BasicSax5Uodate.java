@@ -48,10 +48,11 @@ public class BasicSax5Uodate {
    FileWriter pta; /* Zeichenorientierte Ausgabedatei    */
    PrintWriter pd1;/* Methodeninventar fuer Ausgabedatei */
    String dsn;     /* Name der SQL-Ausgabedatei          */ 
+   String PRIK;
    
    String whereklausel=null;
    String setklausel="SET";
-   String ak=null, wak=null, wk=null, updatestr=null;
+   String ak=null, wak=null, wk=null, updatestr=null, wo=null;
 
   public void startDocument()
   {System.out.println("Anfang des Parsens: ");
@@ -64,13 +65,11 @@ public class BasicSax5Uodate {
   { 
       AttributesImpl b1 = new AttributesImpl(attributes);
       int l=b1.getLength();
-      String PRIK = b1.getQName(0);
-      String wo=b1.getValue(0);
+      PRIK = b1.getValue(0);
+      wo=b1.getValue(0);
       
       
-      int i=1,cm=0;
-      
-      int m=0;
+      int i=1;
       
       while(i<= l-2){
           ak=b1.getQName(i);
@@ -97,7 +96,7 @@ public class BasicSax5Uodate {
       
       setklausel=setklausel+" ";
       whereklausel="WHERE"+PRIK+"="+wo;
-      update="UPDATE"+setklausel+whereklausel;
+      update="UPDATE "+setklausel+whereklausel;
       System.out.println("---> "+update);
   }
 
