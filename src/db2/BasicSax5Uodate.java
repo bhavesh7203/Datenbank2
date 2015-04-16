@@ -48,11 +48,12 @@ public class BasicSax5Uodate {
    FileWriter pta; /* Zeichenorientierte Ausgabedatei    */
    PrintWriter pd1;/* Methodeninventar fuer Ausgabedatei */
    String dsn;     /* Name der SQL-Ausgabedatei          */ 
-   String PRIK;
+   String PRIK=null;
    
    String whereklausel=null;
-   String setklausel="SET";
-   String ak=null, wak=null, wk=null, updatestr=null, wo=null;
+   
+   String ak=null, wak=null, wk=null, updatestr=null, wo=null, tabelle=null;
+   
 
   public void startDocument()
   {System.out.println("Anfang des Parsens: ");
@@ -65,20 +66,21 @@ public class BasicSax5Uodate {
   { 
       AttributesImpl b1 = new AttributesImpl(attributes);
       int l=b1.getLength();
-      PRIK = b1.getValue(0);
-      wo=b1.getValue(0);
+      PRIK = b1.getQName(0);
+      wo=b1.getValue(PRIK);
+      String setklausel=" SET ";
+      m=0;
       
+      if(qName.compareTo("tabname")!=0 && qName.compareTo("UPDKUNDE")!=0)  tabelle=qName;
       
-      int i=1;
-      
-      while(i<= l-2){
-          ak=b1.getQName(i);
-          wak=b1.getValue(i);
+      if (qName.equals("UPDKUNDE")){
+          ak=b1.getValue("USP");
+          wak=b1.getValue("UWERT");
           
-          wk=b1.getValue(i+1);
-          if (wk.equals("char")||wk.equals("varchar")) cm=1;
-          if (wk.equals("date")) cm=3;
-          
+          wk=b1.getValue("DTUSP");
+          if (b1.getValue("DTUSP").compareTo("char")==0||b1.getValue("DTUSP").compareTo("varchar")==0) cm=1;
+          if (b1.getValue("DTUSP").compareTo("date")==0) cm=3;
+          cm=1;
           if(cm==0) wak=wak;
           if(cm==1) wak="'"+wak+"'";
           if(cm==3) wak="TO_DATE('"+wak+"',FORMATSTRING)";
@@ -91,13 +93,14 @@ public class BasicSax5Uodate {
           else{
               setklausel=setklausel+","+ak+"="+wak;
           }
-          i=i+2;
-      }
+          
       
-      setklausel=setklausel+" ";
-      whereklausel="WHERE"+PRIK+"="+wo;
-      update="UPDATE "+setklausel+whereklausel;
-      System.out.println("---> "+update);
+      
+        setklausel=setklausel+" ";
+        whereklausel="WHERE"+PRIK+"="+wo;
+        update="UPDATE "+tabelle+setklausel+whereklausel;
+        System.out.println("---> "+update);
+      }
   }
 
   public void characters(char[] ch, int start, int length) throws SAXException
