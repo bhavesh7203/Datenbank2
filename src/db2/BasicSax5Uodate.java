@@ -22,7 +22,7 @@ import org.xml.sax.helpers.*;
 public class BasicSax5Uodate {
     static String update;
     static ArrayList<String> updates = new ArrayList<>();
-    static int []priks;
+    static ArrayList<String> priks = new ArrayList<>();
   
  public static void main(String[] args){
  
@@ -110,6 +110,7 @@ try{
         update="UPDATE "+tabelle+setklausel+whereklausel;
         System.out.println("---> "+update);
         updates.add(update);
+        priks.add(wo);
         
       }
 
