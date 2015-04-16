@@ -23,12 +23,11 @@ import org.xml.sax.helpers.*;
 public class BasicSax5Uodate {
     static String update;
     static ArrayList<String> updates = new ArrayList<>();
-<<<<<<< HEAD
+
     static ArrayList<String> priks = new ArrayList<>();
-=======
-    static int []priks;
+
     static Connection con;
->>>>>>> 690e6bcce2ee561b248c380471bf2fdbca1698d5
+
   
  public static void main(String[] args){
  
