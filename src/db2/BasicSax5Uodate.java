@@ -22,6 +22,7 @@ import org.xml.sax.helpers.*;
 public class BasicSax5Uodate {
     static String update;
     static ArrayList<String> updates = new ArrayList<>();
+    static int []priks;
   
  public static void main(String[] args){
  
@@ -38,8 +39,8 @@ try{
     Statement stm = con.createStatement();
     for(int i=0;i<updates.size();i++){
     update = updates.get(i);
-        System.out.println(update);
-    stm.executeUpdate(update);
+        //System.out.println(update);
+        stm.executeUpdate(update);
     }
      }catch(SQLException e) {
             System.out.println("UPDATE KUNDE FEHLER : "+e.getMessage());
@@ -109,6 +110,7 @@ try{
         update="UPDATE "+tabelle+setklausel+whereklausel;
         System.out.println("---> "+update);
         updates.add(update);
+        
       }
 
   }
