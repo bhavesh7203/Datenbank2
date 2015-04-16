@@ -102,21 +102,15 @@ try{
           }
           
       
-<<<<<<< HEAD
-      setklausel=setklausel+" ";
-      whereklausel="WHERE"+PRIK+"="+wo;
-      update="UPDATE "+setklausel+whereklausel;
-      System.out.println("---> "+update);
-      updates.add(update);
-      
-=======
+
       
         setklausel=setklausel+" ";
         whereklausel="WHERE"+PRIK+"="+wo;
         update="UPDATE "+tabelle+setklausel+whereklausel;
         System.out.println("---> "+update);
+        updates.add(update);
       }
->>>>>>> d05d09e34b21add6416fe3703845dec60b9e1784
+
   }
 
   public void characters(char[] ch, int start, int length) throws SAXException
