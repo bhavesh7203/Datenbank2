@@ -39,6 +39,13 @@ public class BasicSax5Uodate {
   System.out.println("Versuch: XML-File = "+filename+" zu oeffnen");
   parseXmlFile(filename, handler, ehandler, true);
   
+  System.out.println("Aktuelle Kundendaten: ");
+        for (String prik : priks) {
+            selectKunde(Integer.parseInt(prik));
+        } 
+  
+  
+  System.out.println("Update wird ausgeführt: ");
 try{
     Connection con = DBconnection.connect();
     Statement stm = con.createStatement();
@@ -51,13 +58,20 @@ try{
             System.out.println("UPDATE KUNDE FEHLER : "+e.getMessage());
             System.out.println("SQL Exception wurde geworfen!");
             } 
-   }
+   
+         for (String prik : priks) {
+            selectKunde(Integer.parseInt(prik));
+        } 
+ 
+ 
+ 
+ }
 
 
 
 
  
- public void selectKunde(int knr){
+ public static void selectKunde(int knr){
  
             int kndnr=0,plz=0,kklimit=0;
             String kname="", ort="", strasse="";
