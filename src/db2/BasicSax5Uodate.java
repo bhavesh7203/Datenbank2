@@ -7,6 +7,7 @@ package db2;
 
 import java.io.*;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class BasicSax5Uodate {
     static String update;
     static ArrayList<String> updates = new ArrayList<>();
     static int []priks;
+    static Connection con;
   
  public static void main(String[] args){
  
@@ -48,6 +50,51 @@ try{
             } 
    }
 
+
+
+
+ 
+ public void selectKunde(int knr){
+ 
+            int kndnr=0,plz=0,kklimit=0;
+            String kname="", ort="", strasse="";
+  try{
+        Statement Stmt;
+        ResultSet RS;
+        String SQL;
+        
+            Stmt = con.createStatement();                    
+            SQL  = "SELECT * FROM KUNDE WHERE knr="+knr+" ORDER BY knr";            
+            RS   = Stmt.executeQuery(SQL);
+        
+
+        
+        
+        while(RS.next()){ //kunden für eine bestimmte kundennunmmer
+        
+            kndnr = RS.getInt("knr");
+            plz = RS.getInt("plz");
+            kklimit = RS.getInt("kklimit");
+            kname = RS.getString("kname");
+            ort = RS.getString("ort");
+            strasse = RS.getString("strasse");
+     }
+  
+    }catch(SQLException e) {System.out.println("SQL EXCEPTION BEI SELECT");} 
+
+     
+    
+    System.out.println("KNR: "+kndnr+" Name: "+kname+" KreditLimit: "+kklimit+" PLZ: "+plz+" Ort: "+ort+" Str: "+strasse);
+  
+ 
+    }//ENDE SELECT METHODE
+ 
+ 
+
+ 
+
+ 
+ 
  public static class MyContentHandler implements ContentHandler
  { int za=0;       /* Zeile aktiv <=> za=1               */
    int m=0;        /* lfd. Spaltenr.i.d. Zeile           */
