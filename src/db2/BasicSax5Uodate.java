@@ -9,6 +9,7 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.xml.parsers.*;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
@@ -20,8 +21,9 @@ import org.xml.sax.helpers.*;
  */
 public class BasicSax5Uodate {
     static String update;
+    static ArrayList<String> updates = new ArrayList<>();
   
- public static void main(String[] args) throws SQLException{
+ public static void main(String[] args){
  
   String filename;
   System.out.println("BasicSax5: Welcher XML-File soll geparst werden? (Eingabe mit Endung .xml bitte!)");
@@ -31,14 +33,19 @@ public class BasicSax5Uodate {
   System.out.println("Versuch: XML-File = "+filename+" zu oeffnen");
   parseXmlFile(filename, handler, ehandler, true);
   
-  Connection con = DBconnection.connect();
-  Statement stm = con.createStatement();
-  stm.executeQuery(update);
-  
-  
-  
- 
- }
+try{
+    Connection con = DBconnection.connect();
+    Statement stm = con.createStatement();
+    for(int i=0;i<updates.size();i++){
+    update = updates.get(i);
+        System.out.println(update);
+    stm.executeUpdate(update);
+    }
+     }catch(SQLException e) {
+            System.out.println("UPDATE KUNDE FEHLER : "+e.getMessage());
+            System.out.println("SQL Exception wurde geworfen!");
+            } 
+   }
 
  public static class MyContentHandler implements ContentHandler
  { int za=0;       /* Zeile aktiv <=> za=1               */
@@ -98,6 +105,8 @@ public class BasicSax5Uodate {
       whereklausel="WHERE"+PRIK+"="+wo;
       update="UPDATE "+setklausel+whereklausel;
       System.out.println("---> "+update);
+      updates.add(update);
+      
   }
 
   public void characters(char[] ch, int start, int length) throws SAXException

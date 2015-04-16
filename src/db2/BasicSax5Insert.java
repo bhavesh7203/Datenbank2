@@ -37,13 +37,13 @@ public class BasicSax5Insert{
    try{
     Connection con = DBconnection.connect();
 
-  Statement stm = con.createStatement();
-  
-  for(int i=0;i<inserts.size();i++){
-  insert = inserts.get(i);
-      System.out.println(insert);
-  stm.executeQuery(insert);
-  }
+    Statement stm = con.createStatement();
+
+    for(int i=0;i<inserts.size();i++){
+    insert = inserts.get(i);
+        System.out.println(insert);
+    stm.executeQuery(insert);
+    }
   
    }catch(SQLException e) {
             System.out.println("CONTAINER TYP INSERT FEHLER : "+e.getMessage());
