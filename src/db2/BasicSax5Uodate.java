@@ -117,8 +117,8 @@ try{
   {System.out.println("Anfang des Parsens: ");
   }
   public void endDocument()
-  {pd1.close();
-   System.out.println("Ende des Parsens: "+dsn+" geschlossen.");
+  {//pd1.close();
+   System.out.println("Ende des Parsens");
   }
   public void startElement(String uri,String localName, String qName,Attributes attributes) throws SAXException 
   { 
