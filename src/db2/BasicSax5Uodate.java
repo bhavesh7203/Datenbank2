@@ -22,6 +22,7 @@ import org.xml.sax.helpers.*;
 public class BasicSax5Uodate {
     static String update;
     static ArrayList<String> updates = new ArrayList<>();
+    static int []priks;
   
  public static void main(String[] args){
  
@@ -38,8 +39,8 @@ try{
     Statement stm = con.createStatement();
     for(int i=0;i<updates.size();i++){
     update = updates.get(i);
-        System.out.println(update);
-    stm.executeUpdate(update);
+        //System.out.println(update);
+        stm.executeUpdate(update);
     }
      }catch(SQLException e) {
             System.out.println("UPDATE KUNDE FEHLER : "+e.getMessage());
@@ -102,21 +103,16 @@ try{
           }
           
       
-<<<<<<< HEAD
-      setklausel=setklausel+" ";
-      whereklausel="WHERE"+PRIK+"="+wo;
-      update="UPDATE "+setklausel+whereklausel;
-      System.out.println("---> "+update);
-      updates.add(update);
-      
-=======
+
       
         setklausel=setklausel+" ";
         whereklausel="WHERE"+PRIK+"="+wo;
         update="UPDATE "+tabelle+setklausel+whereklausel;
         System.out.println("---> "+update);
+        updates.add(update);
+        
       }
->>>>>>> d05d09e34b21add6416fe3703845dec60b9e1784
+
   }
 
   public void characters(char[] ch, int start, int length) throws SAXException
