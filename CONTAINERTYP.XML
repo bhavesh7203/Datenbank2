@@ -5,17 +5,17 @@
 <CONTAINERTYP>
     <tabname>CONTAINERTYP</tabname>
     <zeile>
-            <CTNR DT="int">105</CTNR>
+            <CTNR DT="int">400</CTNR>
             <BGW DT="decimal(5,2)">5000</BGW>
             <PPW DT="decimal(10,2)">100</PPW>
             <CTBEZ DT="char">Klein</CTBEZ>
-            <EDAT DT="date">7.4.2015</EDAT>
+            <EDAT DT="date">07.04.2015</EDAT>
     </zeile>
     <zeile>
-    		<CTNR DT="int">106</CTNR>
+    		<CTNR DT="int">401</CTNR>
             <BGW DT="decimal(5,2)">5000</BGW>
             <PPW DT="decimal(10,2)">100</PPW>
             <CTBEZ DT="char">Klein</CTBEZ>
-            <EDAT DT="date">7.4.2015</EDAT>
+            <EDAT DT="date">07.04.2015</EDAT>
     </zeile>
 </CONTAINERTYP>

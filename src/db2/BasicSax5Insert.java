@@ -14,6 +14,7 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.xml.parsers.*;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
@@ -21,9 +22,9 @@ import org.xml.sax.helpers.*;
 public class BasicSax5Insert{
     
  static String insert;
-  
- public static void main(String[] args) throws SQLException{
- 
+ static ArrayList<String> inserts = new ArrayList<>();
+ public static void main(String[] args){
+
   String filename;
   System.out.println("BasicSax5: Welcher XML-File soll geparst werden? (Eingabe mit Endung .xml bitte!)");
   filename="CONTAINERTYP.XML";  //IO1.einstring();
@@ -32,12 +33,22 @@ public class BasicSax5Insert{
   System.out.println("Versuch: XML-File = "+filename+" zu oeffnen");
   parseXmlFile(filename, handler, ehandler, true);
   
-  Connection con = DBconnection.connect();
+  
+   try{
+    Connection con = DBconnection.connect();
+
   Statement stm = con.createStatement();
+  
+  for(int i=0;i<inserts.size();i++){
+  insert = inserts.get(i);
+      System.out.println(insert);
   stm.executeQuery(insert);
+  }
   
-  
-  
+   }catch(SQLException e) {
+            System.out.println("CONTAINER TYP INSERT FEHLER : "+e.getMessage());
+            System.out.println("SQL Exception wurde geworfen!");
+            } 
  
  }
 
@@ -143,27 +154,41 @@ public class BasicSax5Insert{
        wertseq=wertseq+")";
        za=0;
        m=0;
-       insert=insertAnf+tabelle+spaltseq+values+wertseq+";";
+       insert=insertAnf+tabelle+spaltseq+values+wertseq;
        System.out.println("---> "+insert);
        pd1.println(insert);
+       inserts.add(insert);
      }
     /* Verarbeitung der Elemente in einer Zeile */
     if (za==1)     /* za==1 <=> Zeile ist aktiv    */ 
      { String hoch=new String(); 
-       if (cm==1 || cm==3)  /* DTYP(Spalte) ist SQL-char-aehnlich */
-       { hoch="'";
-         cm=0;
+        String dateStart = new String();
+        String dateEnd = new String();
+       if (cm==1)  /* DTYP(Spalte) ist SQL-char-aehnlich */
+       { hoch="'";dateStart="";dateEnd="";
+         
        }
-       else hoch="";
+       if(cm==0){ hoch="";dateStart="";dateEnd="";}
+       if(cm==3){
+           hoch = "";
+           dateStart="TO_DATE('";
+           dateEnd="', 'dd.mm.yyyy')";
+           cm=0;
+       }
        if (m==0)
        { m=1;
          wertseq=wertseq+hoch+aktwert+hoch;
        }
        else
        { m=m+1;
-         wertseq=wertseq+","+hoch+aktwert+hoch;
+         wertseq=wertseq+","+hoch+dateStart+aktwert+dateEnd+hoch;
        }
      }
+    
+   
+    
+    
+    
   }
 
   public void endPrefixMapping(String prefix) throws SAXException
