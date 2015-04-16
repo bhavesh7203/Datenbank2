@@ -156,7 +156,7 @@ try{
 
       
         setklausel=setklausel+" ";
-        whereklausel="WHERE"+PRIK+"="+wo;
+        whereklausel="WHERE "+PRIK+"="+wo;
         update="UPDATE "+tabelle+setklausel+whereklausel;
         System.out.println("---> "+update);
         updates.add(update);
