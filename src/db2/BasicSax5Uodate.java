@@ -137,7 +137,6 @@ try{
   public void startElement(String uri,String localName, String qName,Attributes attributes) throws SAXException 
   { 
       AttributesImpl b1 = new AttributesImpl(attributes);
-      int l=b1.getLength();
       PRIK = b1.getQName(0);
       wo=b1.getValue(PRIK);
       String setklausel=" SET ";

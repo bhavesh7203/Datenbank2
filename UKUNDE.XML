@@ -4,9 +4,9 @@
 
 <KUNDE>
 	<tabname>KUNDE</tabname>
-	<UPDKUNDE KNR="1" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
-	<UPDKUNDE KNR="2" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
-	<UPDKUNDE KNR="3" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
-	<UPDKUNDE KNR="4" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
-	<UPDKUNDE KNR="5" USP="ORT" DTUSP="char(30)" UWERT="New York"/>
+	<UPDKUNDE KNR="1" USP="ORT" DTUSP="char" UWERT="New York"/>
+	<UPDKUNDE KNR="2" USP="ORT" DTUSP="char" UWERT="New York"/>
+	<UPDKUNDE KNR="3" USP="ORT" DTUSP="char" UWERT="New York"/>
+	<UPDKUNDE KNR="4" USP="ORT" DTUSP="char" UWERT="New York"/>
+	<UPDKUNDE KNR="5" USP="ORT" DTUSP="char" UWERT="New York"/>
 </KUNDE>
