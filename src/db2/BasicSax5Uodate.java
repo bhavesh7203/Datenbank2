@@ -156,14 +156,9 @@ try{
           if(cm==1) wak="'"+wak+"'";
           if(cm==3) wak="TO_DATE('"+wak+"',FORMATSTRING)";
           
-          if(m==0){
+         
               setklausel=setklausel+ak+"="+wak;
-              m=1;
-              
-          }
-          else{
-              setklausel=setklausel+","+ak+"="+wak;
-          }
+   
           
       
 
