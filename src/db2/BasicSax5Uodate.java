@@ -29,7 +29,7 @@ public class BasicSax5Uodate {
     static Connection con;
 
   
- public static void main(String[] args){
+ public static void main(String[] args) throws SQLException{
  
   String filename;
   System.out.println("BasicSax5: Welcher XML-File soll geparst werden? (Eingabe mit Endung .xml bitte!)");
@@ -38,7 +38,7 @@ public class BasicSax5Uodate {
   MyErrorHandler ehandler = new MyErrorHandler(); 
   System.out.println("Versuch: XML-File = "+filename+" zu oeffnen");
   parseXmlFile(filename, handler, ehandler, true);
-  
+  Connection con = DBconnection.connect();
   System.out.println("Aktuelle Kundendaten: ");
         for (String prik : priks) {
             selectKunde(Integer.parseInt(prik));
@@ -47,7 +47,7 @@ public class BasicSax5Uodate {
   
   System.out.println("Update wird ausgeführt: ");
 try{
-    Connection con = DBconnection.connect();
+    
     Statement stm = con.createStatement();
     for(int i=0;i<updates.size();i++){
     update = updates.get(i);
@@ -79,7 +79,7 @@ try{
         Statement Stmt;
         ResultSet RS;
         String SQL;
-        
+            Connection con = DBconnection.connect();
             Stmt = con.createStatement();                    
             SQL  = "SELECT * FROM KUNDE WHERE knr="+knr+" ORDER BY knr";            
             RS   = Stmt.executeQuery(SQL);
@@ -101,7 +101,7 @@ try{
 
      
     
-    System.out.println("KNR: "+kndnr+" Name: "+kname+" KreditLimit: "+kklimit+" PLZ: "+plz+" Ort: "+ort+" Str: "+strasse);
+    System.out.println("KNR: "+kndnr+"\t KreditLimit: "+kklimit+"\t PLZ: "+plz+"  Ort: "+ort+"\t Str: "+strasse+"\t Name: "+kname);
   
  
     }//ENDE SELECT METHODE
@@ -150,9 +150,9 @@ try{
           wak=b1.getValue("UWERT");
           
           wk=b1.getValue("DTUSP");
-          if (b1.getValue("DTUSP").compareTo("char")==0||b1.getValue("DTUSP").compareTo("varchar")==0) cm=1;
-          if (b1.getValue("DTUSP").compareTo("date")==0) cm=3;
-          cm=1;
+          if (wk.compareTo("char")==0||wk.compareTo("varchar")==0) cm=1;
+          if (wk.compareTo("date")==0) cm=3;
+          
           if(cm==0) wak=wak;
           if(cm==1) wak="'"+wak+"'";
           if(cm==3) wak="TO_DATE('"+wak+"',FORMATSTRING)";
