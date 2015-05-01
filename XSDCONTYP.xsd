@@ -1,0 +1,29 @@
+<xsd:schema xmlns:xsd="http//www.w3.org/2001/XMLSchema">
+	<!-- definition of simple elements -->
+	<xsd:element name="tabname" type="xsd:string"/>
+	<xsd:element name="CTNR" type="xsd:int"/>
+	<xsd:element name="BGW" type="xsd:decimal" totalDigits="5" fractionDigits="2"/>
+	<xsd:element name="PPW" type="xsd:int" totalDigits="10" fractionDigits="2"/>
+	<xsd:element name="CTBEZ" type="xsd:string"/>
+	<xsd:element name="EDAT" type="xsd:date"/>
+	<!-- definition of complex elements -->
+	<xsd:element name="CONTAINERTYP1">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="tabname"/>
+				<xsd:element ref="zeile" maxOccurs="unbound"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="zeile">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="CTNR"/>
+				<xsd:element ref="BGW"/>
+				<xsd:element ref="PPW"/>
+				<xsd:element ref="CTBEZ"/>
+				<xsd:element ref="EDAT"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
