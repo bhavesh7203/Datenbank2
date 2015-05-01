@@ -52,7 +52,7 @@ public class Parser {
       
       SAXParser saxpars1 = factory.newSAXParser();
       //            String SchemaUrl = "http://www.nt.fh-koeln.de/fachgebiete/inf/buechel/tabelleMa.xsd";
-      String schemaUrl = "tabelleMa.xsd";
+      String schemaUrl = "XSDCONTYP.xsd";
       
       SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/2001/XMLSchema");
       
