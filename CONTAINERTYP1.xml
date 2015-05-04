@@ -1,3 +1,18 @@
 <?xml version="1.0"?>
-<!DOCTYPE CONTAINERTYP SYSTEM "XSDCONTYP.xsd">
-CONTAINERTYP 400 5000 100 Klein 07.04.2015 401 5000 100 Klein 07.04.2015
+<CONTAINERTYP1 xmlns:xsl="http://www.w3.org/2001/XMLSchema-Instance">
+	<tabname>CONTAINERTYP</tabname>
+    <zeile>
+           	<CTNR>400</CTNR>
+           	<BGW>5000</BGW>
+           	<PPW>100</PPW>
+           	<CTBEZ>Klein</CTBEZ>
+            <EDAT>1990-07-26</EDAT>
+    </zeile>
+    <zeile>
+    		<CTNR>401</CTNR>
+            <BGW>5000</BGW>
+            <PPW>100</PPW>
+            <CTBEZ>Klein</CTBEZ>
+            <EDAT>2015-04-30</EDAT>
+    </zeile>
+</CONTAINERTYP1>

@@ -5,9 +5,14 @@
  */
 package db2;
 
+import static db2.BasicSax5Insert.inserts;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.xml.parsers.*;
 import javax.xml.validation.Schema;
 import javax.xml.validation.TypeInfoProvider;
@@ -99,6 +104,23 @@ public class Parser {
       System.out.println("XML-File = " + filename +
       " konnte nicht geoeffnet werden " + e.getMessage());
     }
+    
+    ArrayList<String> inserts = MyContentHandler.getInserts();
+    String insert;
+    try{
+    Connection con = DBconnection.connect();
+
+    Statement stm = con.createStatement();
+
+    for(int i=0;i<inserts.size();i++){
+    insert = inserts.get(i);    
+    stm.executeQuery(insert);
+    }
+  
+   }catch(SQLException e) {
+            System.out.println("CONTAINER TYP INSERT FEHLER : "+e.getMessage());
+            System.out.println("SQL Exception wurde geworfen!");
+            } 
   }
   
   // Ende Methoden

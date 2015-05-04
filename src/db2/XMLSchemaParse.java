@@ -16,5 +16,6 @@ public class XMLSchemaParse {
         String schemaUrl = "XSDCONTYP.xsd";
         Parser p = new Parser("CONTAINERTYP1.xml");
         p.start(true, schemaUrl);
+        
     }
 }

@@ -16,6 +16,7 @@ package db2;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
 import java.io.*;
+import java.util.ArrayList;
 import javax.xml.parsers.*;
 import javax.xml.validation.TypeInfoProvider;
 
@@ -26,6 +27,17 @@ public class MyContentHandler implements ContentHandler {
   int cm = 0; /* DTYP(Spalte) ist SQL-char-aehnlich */
   String aktwert; /* Wert des aktuellen XML-Elements    */
   private final TypeInfoProvider typeInfoProvider;
+  private String insert = "INSERT INTO ";
+  String name;
+  String ctnrWert;
+  String bgwWert;
+  String ppwWert;
+  String ctbezWert;
+  String edatWert;
+  String atName;
+  String atWert;
+  static ArrayList<String> inserts = new ArrayList<>();
+  
   
   public MyContentHandler (TypeInfoProvider typeInfoProvider){
     this.typeInfoProvider = typeInfoProvider;
@@ -98,21 +110,51 @@ public class MyContentHandler implements ContentHandler {
     
     if (qName.compareTo("tabname") == 0) {
       System.out.println("Aktueller Wert: "+aktwert);
+      name = aktwert;
       
     }
-    if (qName.compareTo("artnr") == 0) {
+    if (qName.compareTo("CTNR") == 0) {
       System.out.println("Aktueller Wert: "+aktwert);
-      
+      ctnrWert=aktwert+",";
+      atName=qName+",";
     }
-    if (qName.compareTo("preis") == 0) {
+    if (qName.compareTo("BGW") == 0) {
       System.out.println("Aktueller Wert: "+aktwert);
+      bgwWert=aktwert+",";
+      atName=atName+qName+",";
     }
     
-    if (qName.compareTo("artbez") == 0) {
+    if (qName.compareTo("PPW") == 0) {
       System.out.println("Aktueller Wert: "+aktwert);
+      ppwWert=aktwert+",";
+      atName=atName+qName+",";
+    }
+    
+    if (qName.compareTo("CTBEZ") == 0) {
+      System.out.println("Aktueller Wert: "+aktwert);
+      ctbezWert="'"+aktwert+"'"+",";
+      atName=atName+qName+",";
+    }
+    
+    if (qName.compareTo("EDAT") == 0) {
+      System.out.println("Aktueller Wert: "+aktwert);
+      edatWert="'"+"TO_DATE('"+aktwert+"', 'dd.mm.yyyy')"+"'";
+      atName=atName+qName;
     }
     
     if (qName.compareTo("zeile") == 0) {
+      System.out.println();
+      insert=insert+name+"("+atName+") VALUES OF ("+ctnrWert+bgwWert+ppwWert+ctbezWert+edatWert+")";
+      inserts.add(insert);
+      System.out.println(insert);
+      insert = "INSERT INTO ";
+      ctnrWert=null;
+      bgwWert=null;
+      ppwWert=null;
+      ctbezWert=null;
+      edatWert=null;
+      atName=null;
+      atWert=null;
       System.out.println();
     }
     
@@ -128,4 +170,8 @@ public class MyContentHandler implements ContentHandler {
   
   public void setDocumentLocator(Locator locator) { //System.out.println("-L-> Locator: "+locator.toString());
   }
+
+    public static ArrayList<String> getInserts() {
+        return inserts;
+    }
 }
