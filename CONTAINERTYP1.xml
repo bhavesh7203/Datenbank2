@@ -2,14 +2,14 @@
 <CONTAINERTYP1 xmlns:xsl="http://www.w3.org/2001/XMLSchema-Instance">
 	<tabname>CONTAINERTYP</tabname>
     <zeile>
-           	<CTNR>400</CTNR>
+           	<CTNR>406</CTNR>
            	<BGW>5000</BGW>
            	<PPW>100</PPW>
            	<CTBEZ>Klein</CTBEZ>
             <EDAT>1990-07-26</EDAT>
     </zeile>
     <zeile>
-    		<CTNR>401</CTNR>
+    		<CTNR>407</CTNR>
             <BGW>5000</BGW>
             <PPW>100</PPW>
             <CTBEZ>Klein</CTBEZ>

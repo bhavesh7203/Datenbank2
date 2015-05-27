@@ -138,13 +138,13 @@ public class MyContentHandler implements ContentHandler {
     
     if (qName.compareTo("EDAT") == 0) {
       System.out.println("Aktueller Wert: "+aktwert);
-      edatWert="'"+"TO_DATE('"+aktwert+"', 'dd.mm.yyyy')"+"'";
+      edatWert="TO_DATE('"+aktwert+"', 'yyyy-mm-dd')";
       atName=atName+qName;
     }
     
     if (qName.compareTo("zeile") == 0) {
       System.out.println();
-      insert=insert+name+"("+atName+") VALUES OF ("+ctnrWert+bgwWert+ppwWert+ctbezWert+edatWert+")";
+      insert=insert+name+"("+atName+") VALUES ("+ctnrWert+bgwWert+ppwWert+ctbezWert+edatWert+")";
       inserts.add(insert);
       System.out.println(insert);
       insert = "INSERT INTO ";
