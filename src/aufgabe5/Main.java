@@ -51,6 +51,8 @@ public class Main{
                 System.out.println("POSNR: "+rs.getInt("POSNR"));
                 System.out.println("WOAB: "+rs.getInt("WOAB"));
                 System.out.println("WOBIS: "+rs.getInt("WOBIS"));
+                System.out.println("PSTAO: "+rs.getString("PSTAO"));
+                System.out.println("PZORT: "+rs.getString("PZORT"));
                 System.out.println();
                //System.out.println(rs.getInt("CONR"));
                //mietvA.setBruttopreis(rs.getDouble("BRUTTOPREIS"));
