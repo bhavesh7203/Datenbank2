@@ -1,0 +1,54 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!-- definition of simple elements -->
+	<xsd:element name="tabname" type="xsd:string"/>
+	<xsd:element name="MIETNR" type="xsd:integer"/>
+	<xsd:element name="KNR" type="xsd:integer"/>
+	<xsd:element name="MIETDAT" type="xsd:date"/>
+	<xsd:element name="GESPREIS" type="xsd:decimal"/>
+        <xsd:element name="RDAT" type="xsd:date"/>
+        <xsd:element name="MWST" type="xsd:integer"/>
+        <xsd:element name="BRUTTOPREIS" type="xsd:decimal"/>
+        <xsd:element name="POSNR" type="xsd:integer"/>
+        <xsd:element name="CONR" type="xsd:integer"/>
+        <xsd:element name="WOAB" type="xsd:integer"/>
+        <xsd:element name="WOBIS" type="xsd:integer"/>
+        <xsd:element name="PSTAO" type="xsd:string"/> 
+        <xsd:element name="PZORT" type="xsd:string"/>       
+	<!-- definition of complex elements -->
+	<xsd:element name="MIETVOR">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="tabname"/>
+				<xsd:element ref="zeile" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="zeile">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="MIETNR"/>
+                <xsd:element ref="KNR"/>
+                <xsd:element ref="MIETDAT"/>
+                <xsd:element ref="GESPREIS"/>
+                <xsd:element ref="RDAT"/>
+                <xsd:element ref="MWST"/>
+                <xsd:element ref="BRUTTOPREIS"/>
+				<xsd:element ref="POSLIST" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="POSLIST">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="POSNR"/>
+                <xsd:element ref="CONR"/>
+                <xsd:element ref="WOAB"/>
+                <xsd:element ref="WOBIS"/>
+				<xsd:element ref="MIETNR"/>
+                <xsd:element ref="PSTAO"/>
+                <xsd:element ref="PZORT"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
+		
